@@ -12,10 +12,16 @@ const routes: Routes = [
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
+        data: {
+          title: 'Dashboard'
+        }
       },
       {
         path: 'dashboard',
         component: DashboardComponent,
+        data: {
+          title: 'Dashboard'
+        }
       },
       {
         path: 'students',
@@ -23,6 +29,9 @@ const routes: Routes = [
           import('./main/students/students.module').then(
             (m) => m.StudentsModule
           ),
+          data: {
+            title: 'Students'
+          }
       },
     ],
   },
@@ -30,6 +39,9 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
+      data: {
+        title: 'Login'
+      }
   },
   {
     path: '**',
