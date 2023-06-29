@@ -18,10 +18,10 @@ export class MainComponent implements OnInit {
     router.events
       // Sempre que a navegação (rota) for finalizada...
       .pipe(filter((event) => event instanceof NavigationEnd))
-      
+
       // ...retornamos o activatedRoute...
       .pipe(map(() => activatedRoute))
-      
+
       // ...e buscamos na árvore de rotas
       // a rota que está ativa.
       //
@@ -35,16 +35,19 @@ export class MainComponent implements OnInit {
           return route;
         })
       )
-      
+
       // Pega o "data" da rota, que está lá
       // no arquivo app-routing.module...
       .pipe(switchMap((route) => route.data))
-      
+
       // Finalmente define o título
-      
-      .subscribe((event) => this.title = event['title']);
-      titleService.setTitle(this.title);
+
+      .subscribe((event) => {
+        this.title = event['title']
+        titleService.setTitle(this.title);
+        }
+      );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
